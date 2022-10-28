@@ -1,20 +1,55 @@
-//your code here
-void setup()
-{
-	//your code here
+Particles [] bob;
+void setup() {
+
+  size(700, 700);
+  bob = new Particles[1000];
+  for (int i = 0; i < bob.length; i++) {
+    bob[i] = new Particles();
+  }
+  for (int i = 0; i < 10; i++) {
+    bob[i] = new twoPintO();
+  }
 }
-void draw()
-{
-	//your code here
+void draw() {
+  background(210,210,210);
+  for (int i = 0; i < bob.length; i++) {
+    bob[i].move();
+    bob[i].show();
+  }
 }
-class Particle
-{
-	//your code here
+class Particles {
+  double myX, myY, myAngle, mySpeed, mySize;
+  int myColor;
+  Particles() {
+    myX = 350;
+    myY = 350;
+    myAngle = (Math.random()*3)*Math.PI;
+    mySpeed = Math.random()*11;
+    myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),80);
+    mySize = 10;
+  }
+  void move() {
+    myX = (Math.cos(myAngle))*mySpeed + myX;
+    myY = (Math.sin(myAngle))*mySpeed + myY;
+  }
+  void show() {
+    fill(myColor);
+    ellipse((float)myX, (float)myY, (float)mySize, (float)mySize);
+        fill(255);
+     ellipse((float)myX, (float)myY, (float)(mySize/4), (float)(mySize)/4);
+   
+  }
 }
 
-class OddballParticle //inherits from Particle
-{
-	//your code here
+class twoPintO extends Particles {
+  twoPintO() {
+    myX = 350;
+    myY = 350;
+    myAngle = (Math.random()*3)*Math.PI;
+    mySpeed = Math.random()*11;
+    myColor = color(0, 0, 0);
+    mySize = 30;
+  }
 }
 
 
