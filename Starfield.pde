@@ -1,15 +1,15 @@
 Particles [] bob;
 void setup() {
-
   size(700, 700);
   bob = new Particles[1000];
-  for (int i = 0; i < bob.length; i++) {
+  for (int i = 10; i < bob.length; i++) {
     bob[i] = new Particles();
   }
   for (int i = 0; i < 10; i++) {
     bob[i] = new twoPintO();
   }
 }
+
 void draw() {
   background(200,200,200);
   for (int i = 0; i < bob.length; i++) {
@@ -17,14 +17,16 @@ void draw() {
     bob[i].show();
   }
 }
+
 class Particles {
-  double myX, myY, myAngle, mySpeed, mySize;
+  double myX, myY, myAngle, mySize;
+  int mySpeed;
   int myColor;
   Particles() {
     myX = 350;
     myY = 350;
     myAngle = (Math.random()*3)*Math.PI;
-    mySpeed = Math.random()*11;
+    mySpeed = (int) (Math.random()*11);
     myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),80);
     mySize = 10;
   }
@@ -46,9 +48,8 @@ class twoPintO extends Particles {
     myX = 350;
     myY = 350;
     myAngle = (Math.random()*3)*Math.PI;
-    mySpeed = Math.random()*11;
+    mySpeed = (int) (Math.random()*11);
     myColor = color(0, 0, 0);
     mySize = 30;
   }
 }
-
